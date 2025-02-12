@@ -29,3 +29,28 @@ function Contador(){
         </div>
     )
 }
+ 
+//EVENTOS
+function Botao() {
+    function handleClick() {
+        alert("Botão clicado!");
+    }
+    return <button onClick={handleClick}>Clique Aqui</button>
+}
+
+//RENDERIZAÇÃO CONDICIONAL
+function Saudacao  ({ logado }) {
+    return logado ? <h1>Bem-Vindo! </h1> : <h1>Por Favor, faça login</h1>
+}
+
+//LISTAS E CHAVES 
+const itens = ["Item 1", "Item 2", "Item 3"];
+function Lista() {
+    return (
+        <ul>
+            {itens.map((item, index =>{
+                <li key={index}>{item}</li>
+            }))}
+        </ul>
+    )
+}
