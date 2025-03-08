@@ -17,4 +17,8 @@ public partial class MainWindow : Window
     {
         new ExercicioUm().ShowDialog();
     }
+    private void btnExercicioDois_Click(object sender, RoutedEventArgs e)
+    {
+        new ExercicioDois().ShowDialog();
+    }
 }

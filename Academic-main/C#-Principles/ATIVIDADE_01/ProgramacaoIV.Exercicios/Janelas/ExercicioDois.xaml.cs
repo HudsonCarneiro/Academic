@@ -6,9 +6,9 @@ namespace ProgramacaoIV.Exercicios.Janelas
     /// <summary>
     /// Lógica interna para ExercicioUm.xaml
     /// </summary>
-    public partial class ExercicioUm : Window
+    public partial class ExercicioDois : Window
     {
-        public ExercicioUm()
+        public ExercicioDois()
         {
             InitializeComponent();
         }
