@@ -1,37 +1,45 @@
 ﻿<Window x:Class="ProgramacaoIV.Exercicios.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProgramacaoIV.Exercicios"
-        mc:Ignorable="d"
-        Title="Atividades" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
-    <Grid Margin="5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Atividades"
+        Height="450" Width="500"
+        WindowStartupLocation="CenterScreen"
+        Background="WhiteSmoke">
 
+    <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="45" />
-            <RowDefinition Height="45" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button
-            x:Name="btnExercicioUm"
-            Grid.Column="0"
-            Grid.Row="1"
-            Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
-            Width="145"
-            ToolTip="Soma de Dois Números (Inteiros)"
-            Content="Exercício 1"
-            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
-            Click="btnExercicioUm_Click"/>
+        <!-- Título -->
+        <TextBlock Text="Lista de Exercícios"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="Black"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+        <!-- Lista de Botões -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="btnExercicioUm"
+                    Width="250"
+                    Height="50"
+                    Content="Exercício 1 - Soma"
+                    ToolTip="Soma de Dois Números (Inteiros)"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Margin="0,5"
+                    Click="btnExercicioUm_Click"/>
+
+            <Button x:Name="btnExercicioDois"
+                    Width="250"
+                    Height="50"
+                    Content="Exercício 2 - Conversor"
+                    ToolTip="Conversor de Temperatura"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Margin="0,5"
+                    Click="btnExercicioDois_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

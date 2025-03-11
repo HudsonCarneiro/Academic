@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Exercício 01 - Soma"
+        Title="Exercício 02 - Conversor de Temperatura"
         Height="300" Width="400"
         WindowStartupLocation="CenterScreen"
         Background="WhiteSmoke">
@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <!-- Título -->
-        <TextBlock Text="Calculadora de Soma"
+        <TextBlock Text="Conversor de Temperatura"
                    FontSize="20"
                    FontWeight="Bold"
                    Foreground="Black"
@@ -25,27 +25,21 @@
 
         <!-- Campo 1 -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="Valor 1:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBox x:Name="txtValorUm" Width="200" Margin="10,0,0,0"
+            <TextBlock Text="Valor em Celsius:" FontSize="14" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtValorCelsius" Width="200" Margin="10,0,0,0"
                      Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
         </StackPanel>
 
-        <!-- Campo 2 -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="Valor 2:" FontSize="14" VerticalAlignment="Center"/>
-            <TextBox x:Name="txtValorDois" Width="200" Margin="10,0,0,0"
-                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-        </StackPanel>
 
         <!-- Botão -->
-        <Button x:Name="btnSomar"
+        <Button x:Name="btnConverterEmFahrenheit"
                 Grid.Row="3"
-                Content="Somar"
-                Width="120"
+                Content="Converter para Fahrenheit"
+                Width="220"
                 Height="40"
                 HorizontalAlignment="Center"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignRaisedButton}"
-                Click="btnSomar_Click"/>
+                Click="btnConverterEmFahrenheit_Click"/>
     </Grid>
 </Window>

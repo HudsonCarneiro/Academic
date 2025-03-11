@@ -4,7 +4,7 @@ using System.Windows;
 namespace ProgramacaoIV.Exercicios.Janelas
 {
     /// <summary>
-    /// Lógica interna para ExercicioUm.xaml
+    /// Lógica interna para ExercicioDois.xaml
     /// </summary>
     public partial class ExercicioDois : Window
     {
@@ -13,28 +13,27 @@ namespace ProgramacaoIV.Exercicios.Janelas
             InitializeComponent();
         }
 
-        private void btnSomar_Click(object sender, RoutedEventArgs e)
+        private void btnConverterEmFahrenheit_Click(object sender, RoutedEventArgs e)
         {
-            // Removendo espaços em branco
-            string valorUmTexto = txtValorUm.Text.Trim();
-            string valorDoisTexto = txtValorDois.Text.Trim();
+            // Remove espaços em branco antes da conversão
+            string valorCelsiusTexto = txtValorCelsius.Text.Trim();
 
-            // Verifica se os campos estão vazios
-            if (string.IsNullOrEmpty(valorUmTexto) || string.IsNullOrEmpty(valorDoisTexto))
+            // Verifica se o campo está vazio
+            if (string.IsNullOrEmpty(valorCelsiusTexto))
             {
-                MessageBox.Show("Por favor, preencha ambos os campos.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Por favor, insira um valor em Celsius.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            // Tenta converter os valores
-            if (int.TryParse(valorUmTexto, out int valorUm) && int.TryParse(valorDoisTexto, out int valorDois))
+            // Converte o valor para double e realiza o cálculo
+            if (double.TryParse(valorCelsiusTexto, out double celsius))
             {
-                int resultado = valorUm + valorDois;
-                MessageBox.Show($"Resultado: {resultado}", "Resultado", MessageBoxButton.OK, MessageBoxImage.Information);
+                double fahrenheit = (celsius * 9 / 5) + 32;
+                MessageBox.Show($"{celsius}°C equivale a {fahrenheit:F2}°F", "Resultado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Digite apenas números inteiros válidos.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Digite um número válido para a temperatura.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
