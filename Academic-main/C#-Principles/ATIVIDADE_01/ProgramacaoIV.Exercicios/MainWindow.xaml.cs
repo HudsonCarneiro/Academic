@@ -21,4 +21,9 @@ public partial class MainWindow : Window
     {
         new ExercicioDois().ShowDialog();
     }
+
+    private void btnExercicioTres_Click(object sender, RoutedEventArgs e)
+    {
+        new ExercicioTres().ShowDialog();
+    }
 }

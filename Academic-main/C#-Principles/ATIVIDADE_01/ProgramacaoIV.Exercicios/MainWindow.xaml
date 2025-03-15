@@ -40,6 +40,15 @@
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Margin="0,5"
                     Click="btnExercicioDois_Click"/>
+            
+            <Button x:Name="btnExercicioTres"
+                 Width="250"
+                 Height="50"
+                 Content="Exercício 3 - Aniversário"
+                 ToolTip="Conversor de Temperatura"
+                 Style="{StaticResource MaterialDesignRaisedButton}"
+                 Margin="0,5"
+                 Click="btnExercicioTres_Click"/>
         </StackPanel>
     </Grid>
 </Window>
