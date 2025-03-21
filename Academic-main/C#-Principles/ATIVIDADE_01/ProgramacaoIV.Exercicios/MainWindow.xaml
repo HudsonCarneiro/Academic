@@ -45,10 +45,38 @@
                  Width="250"
                  Height="50"
                  Content="Exercício 3 - Aniversário"
-                 ToolTip="Conversor de Temperatura"
+                 ToolTip="Aniversario"
                  Style="{StaticResource MaterialDesignRaisedButton}"
                  Margin="0,5"
                  Click="btnExercicioTres_Click"/>
+            
+            <Button x:Name="btnExercicioQuatro"
+                 Width="250"
+                 Height="50"
+                 Content="Exercício 4 - Maior Idade"
+                 ToolTip="Calcular maior idade"
+                 Style="{StaticResource MaterialDesignRaisedButton}"
+                 Margin="0,5"
+                 Click="btnExercicioQuatro_Click"/>
+            
+            <Button x:Name="btnExercicioCinco"
+                 Width="250"
+                 Height="50"
+                 Content="Exercício 5 - Exibir Enum"
+                 ToolTip="Exibir Enum"
+                 Style="{StaticResource MaterialDesignRaisedButton}"
+                 Margin="0,5"
+                 Click="btnExercicioCinco_Click"/>
+
+            <Button x:Name="btnExercicioSeis"
+                    Width="250"
+                    Height="50"
+                    Content="Exercício 6 - Contador"
+                    ToolTip="Contador de Cliques"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Margin="0,5"
+                    Click="btnExercicioSeis_Click"/>
+            
         </StackPanel>
     </Grid>
 </Window>

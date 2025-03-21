@@ -26,4 +26,19 @@ public partial class MainWindow : Window
     {
         new ExercicioTres().ShowDialog();
     }
+
+    private void btnExercicioQuatro_Click(object sender, RoutedEventArgs e)
+    {
+        new ExercicioQuatro().ShowDialog();
+    }
+
+    private void btnExercicioCinco_Click(object sender, RoutedEventArgs e)
+    {
+        new ExercicioCinco().ShowDialog();
+    }
+
+    private void btnExercicioSeis_Click(object sender, RoutedEventArgs e)
+    {
+        new ExercicioSeis().ShowDialog();
+    }
 }
