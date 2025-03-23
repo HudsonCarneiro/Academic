@@ -1,0 +1,41 @@
+﻿<Window x:Class="ProgramacaoIV.Exercicios.Janelas.ExercicioOito"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            Title="Exercício 08 - Datas e Enumerações"
+            Height="300" Width="400"
+            WindowStartupLocation="CenterScreen"
+            Background="WhiteSmoke">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Título -->
+        <TextBlock Text="Selecione uma Data"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+        <!-- Seletor de Data -->
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock Text="Escolha uma data:" FontSize="14"/>
+            <DatePicker x:Name="dtpData" Width="200" Margin="0,5"/>
+        </StackPanel>
+
+        <!-- Botão Verificar -->
+        <Button x:Name="btnVerificar"
+                Grid.Row="2"
+                Content="Verificar Dia da Semana"
+                Width="220"
+                Height="40"
+                HorizontalAlignment="Center"
+                Margin="0,20,0,0"
+                Click="btnVerificar_Click"/>
+    </Grid>
+</Window>
+

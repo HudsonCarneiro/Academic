@@ -19,13 +19,13 @@
                    FontWeight="Bold"
                    Foreground="Black"
                    HorizontalAlignment="Center"
-                   Margin="0,0,0,20"/>
+                   Margin="0,0,0,0"/>
 
         <!-- Lista de Botões -->
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left">
             <Button x:Name="btnExercicioUm"
-                    Width="250"
-                    Height="50"
+                    Width="200"
+                    Height="30"
                     Content="Exercício 1 - Soma"
                     ToolTip="Soma de Dois Números (Inteiros)"
                     Style="{StaticResource MaterialDesignRaisedButton}"
@@ -33,8 +33,8 @@
                     Click="btnExercicioUm_Click"/>
 
             <Button x:Name="btnExercicioDois"
-                    Width="250"
-                    Height="50"
+                    Width="200"
+                    Height="30"
                     Content="Exercício 2 - Conversor"
                     ToolTip="Conversor de Temperatura"
                     Style="{StaticResource MaterialDesignRaisedButton}"
@@ -42,8 +42,8 @@
                     Click="btnExercicioDois_Click"/>
             
             <Button x:Name="btnExercicioTres"
-                 Width="250"
-                 Height="50"
+                 Width="200"
+                 Height="30"
                  Content="Exercício 3 - Aniversário"
                  ToolTip="Aniversario"
                  Style="{StaticResource MaterialDesignRaisedButton}"
@@ -51,8 +51,8 @@
                  Click="btnExercicioTres_Click"/>
             
             <Button x:Name="btnExercicioQuatro"
-                 Width="250"
-                 Height="50"
+                 Width="200"
+                 Height="30"
                  Content="Exercício 4 - Maior Idade"
                  ToolTip="Calcular maior idade"
                  Style="{StaticResource MaterialDesignRaisedButton}"
@@ -60,23 +60,65 @@
                  Click="btnExercicioQuatro_Click"/>
             
             <Button x:Name="btnExercicioCinco"
-                 Width="250"
-                 Height="50"
+                 Width="200"
+                 Height="30"
                  Content="Exercício 5 - Exibir Enum"
                  ToolTip="Exibir Enum"
                  Style="{StaticResource MaterialDesignRaisedButton}"
                  Margin="0,5"
                  Click="btnExercicioCinco_Click"/>
 
+            
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+            
             <Button x:Name="btnExercicioSeis"
-                    Width="250"
-                    Height="50"
+                    Width="200"
+                    Height="30"
                     Content="Exercício 6 - Contador"
                     ToolTip="Contador de Cliques"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Margin="0,5"
                     Click="btnExercicioSeis_Click"/>
             
+            <Button x:Name="btnExercicioSete"
+                Width="200"
+                Height="30"
+                Content="Exercício 7 - Parcelar"
+                ToolTip="Parcelar"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Margin="0,5"
+                Click="btnExercicioSete_Click"/>
+
+
+            <Button x:Name="btnExercicioOito"
+                Width="200"
+                Height="30"
+                Content="Exercício 8 - Datas e Enum"
+                ToolTip="Datas e Enumeraçõess"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Margin="0,5"
+                Click="btnExercicioOito_Click"/>
+
+            <Button x:Name="btnExercicioNove"
+                Width="200"
+                Height="30"
+                Content="Exercício 9 - "
+                ToolTip="Contador de Cliques"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Margin="0,5"
+                Click="btnExercicioNove_Click"/>
+
+            <Button x:Name="btnExercicioDez"
+                Width="200"
+                Height="30"
+                Content="Exercício 10 - "
+                ToolTip="Contador de Cliques"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Margin="0,5"
+                Click="btnExercicioDez_Click"/>
+
         </StackPanel>
     </Grid>
 </Window>
