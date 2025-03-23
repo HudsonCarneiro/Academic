@@ -47,18 +47,18 @@ public partial class MainWindow : Window
         new ExercicioSete().ShowDialog();
     }
 
-    private void btnExercicioDez_Click(object sender, RoutedEventArgs e)
+    private void btnExercicioOito_Click(object sender, RoutedEventArgs e)
     {
         new ExercicioOito().ShowDialog();
     }
 
     private void btnExercicioNove_Click(object sender, RoutedEventArgs e)
     {
-
+        new ExercicioNove().ShowDialog();
     }
 
-    private void btnExercicioOito_Click(object sender, RoutedEventArgs e)
+    private void btnExercicioDez_Click(object sender, RoutedEventArgs e)
     {
-
+        new ExercicioDez().ShowDialog();
     }
 }

@@ -1,0 +1,33 @@
+﻿<Window x:Class="ProgramacaoIV.Exercicios.Janelas.ExercicioDez"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            Title="Exercício 10 - Sorteio"
+            Height="300" Width="400"
+            WindowStartupLocation="CenterScreen"
+            Background="WhiteSmoke">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Título -->
+        <TextBlock Text="Sorteio"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+        <Button x:Name="btnSortear"
+                Grid.Row="1"
+                Content="Sortear"
+                Width="220"
+                Height="40"
+                HorizontalAlignment="Center"
+                Click="btnSortear_Click"/>
+    </Grid>
+</Window>
+

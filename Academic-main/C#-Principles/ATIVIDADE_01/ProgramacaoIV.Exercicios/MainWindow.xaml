@@ -104,8 +104,8 @@
             <Button x:Name="btnExercicioNove"
                 Width="200"
                 Height="30"
-                Content="Exercício 9 - "
-                ToolTip="Contador de Cliques"
+                Content="Exercício 9 - Interruptor"
+                ToolTip="Interruptor"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Margin="0,5"
                 Click="btnExercicioNove_Click"/>
@@ -113,8 +113,8 @@
             <Button x:Name="btnExercicioDez"
                 Width="200"
                 Height="30"
-                Content="Exercício 10 - "
-                ToolTip="Contador de Cliques"
+                Content="Exercício 10 - Sorteio "
+                ToolTip="Sortear"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Margin="0,5"
                 Click="btnExercicioDez_Click"/>
