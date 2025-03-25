@@ -1,13 +1,21 @@
 package umfg
 
 import io.ktor.server.application.*
+import io.ktor.server.netty.EngineMain
+import umfg.infra.repository.UserRepository
 
 fun main(args: Array<String>) {
-    io.ktor.server.netty.EngineMain.main(args)
+    EngineMain.main(args)
 }
 
-
 fun Application.module() {
+    // Inicializa conexão com o banco de dados
+    DatabaseFactory.connect()
+
+    // Cria uma instância do UserRepository
+    val userRepository = UserRepository()
+
+    // Configura serialização e rotas
     configureSerialization()
-    configureRouting()
+    configureRouting(userRepository)
 }

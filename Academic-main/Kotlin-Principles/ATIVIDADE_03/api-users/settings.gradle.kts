@@ -1,1 +1,1 @@
-rootProject.name = "tasks-server"
+rootProject.name = "api-users"
