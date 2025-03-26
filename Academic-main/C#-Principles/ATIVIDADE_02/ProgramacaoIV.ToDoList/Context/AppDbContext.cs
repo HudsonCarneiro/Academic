@@ -3,26 +3,16 @@ using ProgramacaoIV.ToDoList.Model;
 
 namespace ProgramacaoIV.ToDoList.Context;
 
-public sealed class TodoContext : DbContext
+public class AppDbContext : DbContext
 {
-    public DbSet<Todo> Todos { get; set; }
+    public DbSet<Nota> Notas { get; set; }
 
-    public TodoContext(DbContextOptions<TodoContext> options) : base(options) 
-    {
-        if (Database.GetPendingMigrations().Any())
-            Database.Migrate();
-    }
-    
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
-
-        #region todo
-
-        modelBuilder.Entity<Todo>().HasKey(t => t.Id);
-        modelBuilder.Entity<Todo>().Property(t => t.Title).IsRequired();
-        modelBuilder.Entity<Todo>().Property(t => t.IsDone).IsRequired();
-
-        #endregion todo
+        modelBuilder.Entity<Nota>()
+            .Property(n => n.DataLancamento)
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
     }
 }

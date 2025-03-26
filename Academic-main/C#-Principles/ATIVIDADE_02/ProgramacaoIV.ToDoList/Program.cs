@@ -1,69 +1,56 @@
-
 using Microsoft.EntityFrameworkCore;
 using ProgramacaoIV.ToDoList.Context;
 using ProgramacaoIV.ToDoList.Model;
 
-namespace ProgramacaoIV.ToDoList;
 
-public class Program
-{
-    private const string _connectionString = "Server=localhost;Port=3306;Database=umfg_todo_list;Uid=root;Pwd=root;";
+var builder = WebApplication.CreateBuilder(args);
 
-    public static void Main(string[] args)
-    {
-        var builder = WebApplication.CreateBuilder(args);
+// Configuração do banco de dados usando appsettings.json
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<TodoContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-        builder.Services.AddDbContext<TodoContext>(options => options.UseMySQL(_connectionString));
+var app = builder.Build();
 
-        var app = builder.Build();
+#region Endpoints
 
-        #region endpoints
+// GET - Listar todas as tarefas
+app.MapGet("/todos", async(TodoContext context) =>
+    await context.Todos.ToListAsync());
 
-        // GET - Listar todas as tarefas
-        app.MapGet("/todos", async (TodoContext context) => await context.Todos.ToListAsync());
+// GET - Obter uma tarefa por ID
+app.MapGet("/todos/{id}", async(Guid id, TodoContext context) =>
+    await context.Todos.FindAsync(id) is Todo todo ? Results.Ok(todo) : Results.NotFound());
 
-        // GET - Obter uma tarefa por ID
-        app.MapGet("/todos/{id}", async (string id, TodoContext context) =>
-            await context.Todos.FindAsync(Guid.Parse(id)) is Todo todo ? Results.Ok(todo) : Results.NotFound());
+// POST - Criar uma nova tarefa
+app.MapPost("/todos", async(Todo todo, TodoContext context) => {
+    context.Todos.Add(todo);
+    await context.SaveChangesAsync();
+    return Results.Created($"/todos/{todo.Id}", todo);
+});
 
-        // POST - Criar uma nova tarefa
-        app.MapPost("/todos", async (Todo todo, TodoContext context) => {
-            context.Todos.Add(todo);
-            await context.SaveChangesAsync();
+// PUT - Atualizar uma tarefa
+app.MapPut("/todos/{id}", async (Guid id, Todo inputTodo, TodoContext context) => {
+    var todo = await context.Todos.FindAsync(id);
+    if (todo is null) return Results.NotFound();
 
-            return Results.Created($"/todos/{todo.Id}", todo);
-        });
+    todo.Title = inputTodo.Title;
+    todo.IsDone = inputTodo.IsDone;
 
-        // PUT - Atualizar uma tarefa
-        app.MapPut("/todos/{id}", async (string id, Todo inputTodo, TodoContext context) => {
-            var todo = await context.Todos.FindAsync(Guid.Parse(id));
-            
-            if (todo is null) 
-                return Results.NotFound();
+    await context.SaveChangesAsync();
+    return Results.NoContent();
+});
 
-            todo.Title = inputTodo.Title;
-            todo.IsDone = inputTodo.IsDone;
+// DELETE - Remover uma tarefa
+app.MapDelete("/todos/{id}", async (Guid id, TodoContext context) => {
+    var todo = await context.Todos.FindAsync(id);
+    if (todo is null) return Results.NotFound();
 
-            await context.SaveChangesAsync();
+    context.Todos.Remove(todo);
+    await context.SaveChangesAsync();
+    return Results.NoContent();
+});
 
-            return Results.NoContent();
-        });
+#endregion
 
-        // DELETE - Remover uma tarefa
-        app.MapDelete("/todos/{id}", async (string id, TodoContext context) => {
-            var todo = await context.Todos.FindAsync(Guid.Parse(id));
-            
-            if (todo is null) 
-                return Results.NotFound();
-
-            context.Todos.Remove(todo);
-            await context.SaveChangesAsync();
-
-            return Results.NoContent();
-        });
-
-        #endregion endpoints
-
-        app.Run();
-    }
-}
+app.Run();
