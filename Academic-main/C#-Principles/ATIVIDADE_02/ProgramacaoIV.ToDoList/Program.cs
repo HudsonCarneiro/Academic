@@ -15,22 +15,24 @@ var app = builder.Build();
 #region Endpoints
 
 // GET - Listar todas as tarefas
-app.MapGet("/todos", async(TodoContext context) =>
+app.MapGet("/todos", async (TodoContext context) =>
     await context.Todos.ToListAsync());
 
 // GET - Obter uma tarefa por ID
-app.MapGet("/todos/{id}", async(Guid id, TodoContext context) =>
+app.MapGet("/todos/{id}", async (Guid id, TodoContext context) =>
     await context.Todos.FindAsync(id) is Todo todo ? Results.Ok(todo) : Results.NotFound());
 
 // POST - Criar uma nova tarefa
-app.MapPost("/todos", async(Todo todo, TodoContext context) => {
+app.MapPost("/todos", async (Todo todo, TodoContext context) =>
+{
     context.Todos.Add(todo);
     await context.SaveChangesAsync();
     return Results.Created($"/todos/{todo.Id}", todo);
 });
 
 // PUT - Atualizar uma tarefa
-app.MapPut("/todos/{id}", async (Guid id, Todo inputTodo, TodoContext context) => {
+app.MapPut("/todos/{id}", async (Guid id, Todo inputTodo, TodoContext context) =>
+{
     var todo = await context.Todos.FindAsync(id);
     if (todo is null) return Results.NotFound();
 
@@ -42,7 +44,8 @@ app.MapPut("/todos/{id}", async (Guid id, Todo inputTodo, TodoContext context) =
 });
 
 // DELETE - Remover uma tarefa
-app.MapDelete("/todos/{id}", async (Guid id, TodoContext context) => {
+app.MapDelete("/todos/{id}", async (Guid id, TodoContext context) =>
+{
     var todo = await context.Todos.FindAsync(id);
     if (todo is null) return Results.NotFound();
 
