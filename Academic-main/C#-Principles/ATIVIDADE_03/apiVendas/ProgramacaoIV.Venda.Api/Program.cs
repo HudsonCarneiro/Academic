@@ -4,11 +4,12 @@ using ProgramacaoIV.Venda.Api.Context;
 using ProgramacaoIV.Venda.Api.Entidades;
 using static ProgramacaoIV.Venda.Api.DTO.TransacaoDTO;
 
-var connectionString = "Server=localhost;Port=3306;Database=umfg_venda_api;Uid=root;Pwd=root;";
+var connectionString = "Server=localhost;Port=3306;Database=umfg_venda_api;Uid=root;Pwd=admin;";
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<VendaContext>(options => options.UseMySQL(connectionString));
+builder.Services.AddDbContext<VendaContext>(options =>
+    options.UseMySQL(connectionString));
 
 #region endpoints
 

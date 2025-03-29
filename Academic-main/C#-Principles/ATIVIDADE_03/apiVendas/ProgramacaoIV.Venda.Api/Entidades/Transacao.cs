@@ -8,6 +8,11 @@ public sealed class Transacao : AbstractEntity
     public decimal Total => Itens.Sum(x => x.Total);
 
     // Construtor de Transacao
+
+
+    public Transacao() { }
+    
+
     public Transacao(Cliente cliente, Vendedor vendedor)
     {
         Cliente = cliente ?? throw new ArgumentNullException(nameof(cliente));

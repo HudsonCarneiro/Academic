@@ -6,16 +6,13 @@ namespace ProgramacaoIV.Venda.Api.Context;
 
 public class VendaContext : DbContext
 {
+    public DbSet<Vendedor> Vendedores { get; set; }
     public DbSet<Cliente> Clientes { get; set; }
-    public DbSet<Vendedor> Vendedores { get; set; } 
     public DbSet<Produto> Produtos { get; set; }
     public DbSet<Transacao> Transacoes { get; set; }
     public DbSet<ItemTransacao> ItensTransacoes { get; set; }
 
-    public VendaContext(DbContextOptions<VendaContext> options) : base(options)
-    {
-       
-    }
+    public VendaContext(DbContextOptions<VendaContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

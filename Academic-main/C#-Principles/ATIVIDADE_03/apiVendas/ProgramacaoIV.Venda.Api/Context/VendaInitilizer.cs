@@ -2,11 +2,15 @@
 
 namespace ProgramacaoIV.Venda.Api.Context;
 
+
+
 public static class VendaInitializer
 {
+ 
+
     public static void Initialize(VendaContext context)
     {
-       
+
         PopularTabelas(context);
     }
 
@@ -28,7 +32,7 @@ public static class VendaInitializer
 
         if (!context.Vendedores.Any())
         {
-            context.Vendedores.Add(new Vendedor("VENDEDOR02", "vendedor02@email.com")); 
+            context.Vendedores.Add(new Vendedor("VENDEDOR02", "vendedor02@email.com"));
             alterado = true;
         }
 
