@@ -143,7 +143,7 @@ app.MapPost("/transacoes", async ([FromBody] TransacaoCapaRequest request, Venda
 
     // Buscar o vendedor (você pode passar um Vendedor específico ou associar um padrão)
     var vendedor = await context.Vendedores
-        .Where(x => x.IsAtivo)  // Se necessário, use um filtro específico
+        .Where(x => x.IsAtivo) 
         .FirstOrDefaultAsync();
 
     if (vendedor is null)
