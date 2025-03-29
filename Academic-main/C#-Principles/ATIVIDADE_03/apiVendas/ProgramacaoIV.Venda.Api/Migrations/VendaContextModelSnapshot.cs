@@ -201,16 +201,12 @@ namespace ProgramacaoIV.Venda.Api.Migrations
                         .HasColumnName("ID");
 
                     b.Property<DateTime>("DataAtualizacao")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("DT_ATUALIZACAO")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasColumnName("DT_ATUALIZACAO");
 
                     b.Property<DateTime>("DataCriacao")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("DT_CRIACAO")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasColumnName("DT_CRIACAO");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -219,10 +215,8 @@ namespace ProgramacaoIV.Venda.Api.Migrations
                         .HasColumnName("EM_VENDEDOR");
 
                     b.Property<bool>("IsAtivo")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(true)
-                        .HasColumnName("IS_ATIVO");
+                        .HasColumnName("IN_ATIVO");
 
                     b.Property<string>("Nome")
                         .IsRequired()

@@ -1,6 +1,7 @@
 ﻿using ProgramacaoIV.Venda.Api.Entidades;
 using System.Text.RegularExpressions;
 
+
 public class Vendedor : AbstractEntity
 {
     public string Nome { get; private set; }

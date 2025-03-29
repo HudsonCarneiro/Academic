@@ -22,19 +22,6 @@ public sealed class VendedorMap : AbstractEntidadeMap<Vendedor>
             .HasMaxLength(200)
             .IsRequired();
 
-        builder.Property(x => x.IsAtivo)
-            .HasColumnName("IS_ATIVO")
-            .HasDefaultValue(true) // Define o valor padrão como true
-            .IsRequired();
-
-        builder.Property(x => x.DataCriacao) // Corrigido para DataCriacao
-            .HasColumnName("DT_CRIACAO")
-            .HasDefaultValueSql("GETUTCDATE()") // Usa a data do banco no momento da criação
-            .IsRequired();
-
-        builder.Property(x => x.DataAtualizacao) // Corrigido para DataAtualizacao
-            .HasColumnName("DT_ATUALIZACAO")
-            .HasDefaultValueSql("GETUTCDATE()") // Atualizado automaticamente
-            .IsRequired();
+      
     }
 }
