@@ -265,48 +265,81 @@ app.MapDelete("/transacoes/{id}", async (string id, VendaContext context) =>
 
 #region vendedor
 
-app.MapGet("/vendedores", async (VendaContext context) => await context.Vendedores.Where(x => x.IsAtivo).ToListAsync());
+// Obter todos os vendedores ativos
+app.MapGet("/vendedores", async (VendaContext context) =>
+    await context.Vendedores.Where(x => x.IsAtivo).ToListAsync());
 
+// Obter um vendedor pelo ID
 app.MapGet("/vendedores/{id}", async (string id, VendaContext context) =>
-    await context.Vendedores.Where(x => x.Id == Guid.Parse(id) && x.IsAtivo).FirstOrDefaultAsync() is Vendedor vendedor ? Results.Ok(vendedor) : Results.NotFound());
+{
+    var vendedor = await context.Vendedores
+        .Where(x => x.Id == Guid.Parse(id) && x.IsAtivo)
+        .FirstOrDefaultAsync();
 
+    return vendedor is not null ? Results.Ok(vendedor) : Results.NotFound();
+});
+
+// Criar um novo vendedor
 app.MapPost("/vendedores", async (Vendedor vendedor, VendaContext context) =>
 {
-    context.Clientes.Add(vendedor);
-    await context.SaveChangesAsync();
-
-    return Results.Created($"/vendedores/{vendedor.Id}", vendedor);
+    try
+    {
+        context.Vendedores.Add(vendedor);
+        await context.SaveChangesAsync();
+        return Results.Created($"/vendedores/{vendedor.Id}", vendedor);
+    }
+    catch (Exception ex)
+    {
+        return Results.BadRequest(new { message = "Erro ao cadastrar vendedor", error = ex.Message });
+    }
 });
 
+// Atualizar um vendedor existente
 app.MapPut("/vendedores/{id}", async (string id, Vendedor input, VendaContext context) =>
 {
-    var vendedor = await context.Vendedores.Where(x => x.Id == Guid.Parse(id) && x.IsAtivo).FirstOrDefaultAsync();
+    try
+    {
+        var vendedor = await context.Vendedores
+            .Where(x => x.Id == Guid.Parse(id) && x.IsAtivo)
+            .FirstOrDefaultAsync();
 
-    if (Vendedor is null)
-        return Results.NotFound();
+        if (vendedor is null)
+            return Results.NotFound();
 
-    vendedor.Nome = input.Nome;
-    vendedor.Email = input.Email;
+        vendedor.Nome = input.Nome;
+        vendedor.Email = input.Email;
+        vendedor.AtualizarDataAtualizacao();
 
-    vendedor.AtualizarDataAtualizacao();
-
-    await context.SaveChangesAsync();
-
-    return Results.NoContent();
+        await context.SaveChangesAsync();
+        return Results.NoContent();
+    }
+    catch (Exception ex)
+    {
+        return Results.BadRequest(new { message = "Erro ao atualizar vendedor", error = ex.Message });
+    }
 });
 
+// Remover (desativar) um vendedor
 app.MapDelete("/vendedores/{id}", async (string id, VendaContext context) =>
 {
-    var vendedor = await context.Vendedores.Where(x => x.Id == Guid.Parse(id) && x.IsAtivo).FirstOrDefaultAsync();
+    try
+    {
+        var vendedor = await context.Vendedores
+            .Where(x => x.Id == Guid.Parse(id) && x.IsAtivo)
+            .FirstOrDefaultAsync();
 
-    if (vendedor is null)
-        return Results.NotFound();
+        if (vendedor is null)
+            return Results.NotFound();
 
-    vendedor.Inativar();
+        vendedor.Inativar();
+        await context.SaveChangesAsync();
 
-    await context.SaveChangesAsync();
-
-    return Results.NoContent();
+        return Results.NoContent();
+    }
+    catch (Exception ex)
+    {
+        return Results.BadRequest(new { message = "Erro ao deletar vendedor", error = ex.Message });
+    }
 });
 
 #endregion vendedor
