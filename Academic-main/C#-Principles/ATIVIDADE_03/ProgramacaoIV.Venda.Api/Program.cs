@@ -133,18 +133,31 @@ app.MapGet("/transacoes/{id}", async (string id, VendaContext context)
 
 app.MapPost("/transacoes", async ([FromBody] TransacaoCapaRequest request, VendaContext context) =>
 {
-    var cliente = await context.Clientes.Where(x => x.Id == request.IdCliente && x.IsAtivo).FirstOrDefaultAsync();
+    // Buscar o cliente
+    var cliente = await context.Clientes
+        .Where(x => x.Id == request.IdCliente && x.IsAtivo)
+        .FirstOrDefaultAsync();
 
     if (cliente is null)
-        return Results.NotFound();
+        return Results.NotFound("Cliente não encontrado.");
 
-    var transacao = new Transacao(cliente);
+    // Buscar o vendedor (você pode passar um Vendedor específico ou associar um padrão)
+    var vendedor = await context.Vendedores
+        .Where(x => x.IsAtivo)  // Se necessário, use um filtro específico
+        .FirstOrDefaultAsync();
+
+    if (vendedor is null)
+        return Results.NotFound("Vendedor não encontrado.");
+
+    // Criar a transação com o cliente e o vendedor
+    var transacao = new Transacao(cliente, vendedor);
 
     context.Transacoes.Add(transacao);
     await context.SaveChangesAsync();
 
     return Results.Created($"/transacoes/{transacao.Id}", transacao);
 });
+
 
 app.MapPost("/transacoes/{idTransacao}/itens", async (string idTransacao, [FromBody] TransacaoItemRequest request, VendaContext context) =>
 {
@@ -280,21 +293,28 @@ app.MapGet("/vendedores/{id}", async (string id, VendaContext context) =>
 });
 
 // Criar um novo vendedor
-app.MapPost("/vendedores", async (Vendedor vendedor, VendaContext context) =>
+app.MapPost("/transacoes", async ([FromBody] TransacaoCapaRequest request, VendaContext context) =>
 {
-    try
-    {
-        context.Vendedores.Add(vendedor);
-        await context.SaveChangesAsync();
-        return Results.Created($"/vendedores/{vendedor.Id}", vendedor);
-    }
-    catch (Exception ex)
-    {
-        return Results.BadRequest(new { message = "Erro ao cadastrar vendedor", error = ex.Message });
-    }
+    var cliente = await context.Clientes
+        .Where(x => x.Id == request.IdCliente && x.IsAtivo)
+        .FirstOrDefaultAsync();
+
+    var vendedor = await context.Vendedores
+        .Where(x => x.IsAtivo) // Assumindo que você vai pegar um vendedor ativo
+        .FirstOrDefaultAsync();
+
+    if (cliente is null || vendedor is null)
+        return Results.NotFound();
+
+    var transacao = new Transacao(cliente, vendedor);
+
+    context.Transacoes.Add(transacao);
+    await context.SaveChangesAsync();
+
+    return Results.Created($"/transacoes/{transacao.Id}", transacao);
 });
 
-// Atualizar um vendedor existente
+
 app.MapPut("/vendedores/{id}", async (string id, Vendedor input, VendaContext context) =>
 {
     try
@@ -306,9 +326,8 @@ app.MapPut("/vendedores/{id}", async (string id, Vendedor input, VendaContext co
         if (vendedor is null)
             return Results.NotFound();
 
-        vendedor.Nome = input.Nome;
-        vendedor.Email = input.Email;
-        vendedor.AtualizarDataAtualizacao();
+        // Usando o método de atualização
+        vendedor.AtualizarInformacoes(input.Nome, input.Email);
 
         await context.SaveChangesAsync();
         return Results.NoContent();
@@ -318,6 +337,7 @@ app.MapPut("/vendedores/{id}", async (string id, Vendedor input, VendaContext co
         return Results.BadRequest(new { message = "Erro ao atualizar vendedor", error = ex.Message });
     }
 });
+
 
 // Remover (desativar) um vendedor
 app.MapDelete("/vendedores/{id}", async (string id, VendaContext context) =>
