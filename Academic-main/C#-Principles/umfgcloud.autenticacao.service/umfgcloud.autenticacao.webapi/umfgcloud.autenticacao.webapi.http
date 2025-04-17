@@ -1,0 +1,6 @@
+@umfgcloud.autenticacao.webapi_HostAddress = http://localhost:5062
+
+GET {{umfgcloud.autenticacao.webapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Apresentacao", "01 - Apresentacao", "{A13E3913-C1B6-4C1E-93FA-89098E46614A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Aplicacao", "02 - Aplicacao", "{6C42D28E-F11D-4EF2-8031-FD980B3CD363}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Dominio", "03 - Dominio", "{F5C7A5BD-E4FD-458E-BD5D-B0468788AF78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Infraestrutura", "04 - Infraestrutura", "{8135385D-80DD-4AD5-9B05-D7CF7D3A98E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "umfgcloud.autenticacao.webapi", "umfgcloud.autenticacao.webapi\umfgcloud.autenticacao.webapi.csproj", "{D9D05CA3-50E0-4DA1-9298-E5AEF5C3039F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "umfgcloud.autenticacao.servicos", "umfgcloud.autenticacao.servicos\umfgcloud.autenticacao.servicos.csproj", "{8B096264-0CA2-4789-B7C2-4F28ECB299B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "umfgcloud.autenticacao.dominio", "umfgcloud.autenticacao.dominio\umfgcloud.autenticacao.dominio.csproj", "{A5AF5369-799F-4415-ABEC-4F481E830E8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "umfgcloud.autenticacao.repositorio", "umfgcloud.autenticacao.repositorio\umfgcloud.autenticacao.repositorio.csproj", "{03F60023-57AA-4551-8441-FFBDBB3D8A12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9D05CA3-50E0-4DA1-9298-E5AEF5C3039F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D05CA3-50E0-4DA1-9298-E5AEF5C3039F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D05CA3-50E0-4DA1-9298-E5AEF5C3039F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D05CA3-50E0-4DA1-9298-E5AEF5C3039F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B096264-0CA2-4789-B7C2-4F28ECB299B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B096264-0CA2-4789-B7C2-4F28ECB299B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B096264-0CA2-4789-B7C2-4F28ECB299B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B096264-0CA2-4789-B7C2-4F28ECB299B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5AF5369-799F-4415-ABEC-4F481E830E8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5AF5369-799F-4415-ABEC-4F481E830E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5AF5369-799F-4415-ABEC-4F481E830E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5AF5369-799F-4415-ABEC-4F481E830E8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03F60023-57AA-4551-8441-FFBDBB3D8A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03F60023-57AA-4551-8441-FFBDBB3D8A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03F60023-57AA-4551-8441-FFBDBB3D8A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03F60023-57AA-4551-8441-FFBDBB3D8A12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D9D05CA3-50E0-4DA1-9298-E5AEF5C3039F} = {A13E3913-C1B6-4C1E-93FA-89098E46614A}
+		{8B096264-0CA2-4789-B7C2-4F28ECB299B4} = {6C42D28E-F11D-4EF2-8031-FD980B3CD363}
+		{A5AF5369-799F-4415-ABEC-4F481E830E8B} = {F5C7A5BD-E4FD-458E-BD5D-B0468788AF78}
+		{03F60023-57AA-4551-8441-FFBDBB3D8A12} = {8135385D-80DD-4AD5-9B05-D7CF7D3A98E3}
+	EndGlobalSection
+EndGlobal

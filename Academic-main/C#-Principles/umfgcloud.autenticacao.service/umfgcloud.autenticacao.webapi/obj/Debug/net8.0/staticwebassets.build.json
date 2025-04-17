@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "m/kiRbU23YYUihZmyrGmLuhXmeRnA1HjmjC35U2OoAs=",
+  "Source": "umfgcloud.autenticacao.webapi",
+  "BasePath": "_content/umfgcloud.autenticacao.webapi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
